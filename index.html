@@ -9,7 +9,6 @@
 <body>
     <div class="container">
         <div class="leftSide">
-            <!-- <img src="images/background.jpg" class="background"> -->
             <div class="blackTrans">
                 <img src="images/logo.png" class="logo">
             </div>
@@ -37,8 +36,8 @@
                                 <input type="email" name="email" id="email" required/>
                             </li>
                             <li>
-                                <label for="password">FIRST NAME</label><br>
-                                <input type="password" name="password" id="password" required/>
+                                <label for="password">PASSWORD</label><br>
+                                <input type="password" name="password" id="password" class="error" required/>
                             </li>
                         </ul>
                         
@@ -55,11 +54,13 @@
                             </li>
                             <li>
                                 <label for="confirmPwd">CONFIRM PASSWORD</label><br>
-                                <input type="password" name="confirmpwd" id="confirmPwd" required/>
+                                <input type="password" name="confirmpwd" id="confirmPwd" class="error" required/>
                             </li>
                         </ul>
+                        
                     </div>
                 </form>
+                <div class="errorMsg">error </div>
             </div>
             <div class="footer">
                 <button type="submit">Create Account</button>
@@ -67,5 +68,36 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function checkPass(){
+            console.log(pass.value);
+            if(pass.value != pwd.value){
+                
+                pass.classList.add("red");
+                pwd.classList.add("red");
+                errMsg.textContent = "password does not match";
+                errMsg.style.cssText = "color: red;";
+            }else{
+                pass.classList.remove("red");
+                pwd.classList.remove("red");
+                errMsg.textContent = "ok";
+                errMsg.style.cssText = "color: white;";
+            }
+        }
+
+        const pass = document.querySelector("#password");
+        const pwd = document.querySelector("#confirmPwd");
+        const submit = document.querySelector("button");
+        const errMsg = document.querySelector(".errorMsg");
+
+        submit.addEventListener("click", ()=> {
+            checkPass();
+        });
+        
+
+
+        
+    </script>
 </body>
 </html>
